@@ -1,0 +1,8 @@
+# API keys
+SPORTS_API_KEY=REPLACE_ME
+ODDS_API_KEY=REPLACE_ME
+
+# App settings
+FLASK_ENV=development
+MODEL_PATH=/data/models/latest_model.joblib
+DATA_DIR=/data

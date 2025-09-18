@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+api:
+build: .
+container_name: sports_api
+env_file: .env
+volumes:
+- ./data:/app/data
+ports:
+- "5000:5000"
+
+frontend:
+build:
+context: ./frontend
+container_name: sports_frontend
+environment:
+- REACT_APP_API_KEY=${API_READ_KEY}
+ports:
+- "3000:3000"
+
+nginx:
+image: nginx:1.25
+container_name: sports_nginx
+volumes:
+- ./nginx.conf:/etc/nginx/nginx.conf:ro
+ports:
+- "80:80"
+depends_on:
+- api
+- frontend
